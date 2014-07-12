@@ -1,4 +1,6 @@
-<?php namespace Alexpechkarev\GoogleGeocoder;
+<?php 
+
+namespace Alexpechkarev\GoogleGeocoder;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -18,8 +20,18 @@ class GoogleGeocoderServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//
+		    $this->app['GoogleGeocoder'] = $this->app->share(function($app)
+		    {
+                	return new GoogleGeocoder();
+		        	
+		    }); 
 	}
+        
+        public function boot(){
+            
+            $this->package("alexpechkarev/google-geocoder");
+            
+        }        
 
 	/**
 	 * Get the services provided by the provider.

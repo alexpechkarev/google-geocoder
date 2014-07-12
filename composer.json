@@ -1,0 +1,20 @@
+{
+    "name": "alexpechkarev/google-geocoder",
+    "description": "",
+    "authors": [
+        {
+            "name": "Alexander Pechkarev",
+            "email": "alexpechkarev@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.1.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Alexpechkarev\\GoogleGeocoder": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}

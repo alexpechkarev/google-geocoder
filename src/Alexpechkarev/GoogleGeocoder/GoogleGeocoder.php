@@ -8,7 +8,6 @@
 
 namespace Alexpechkarev\GoogleGeocoder;
 
-use Illuminate\Support\Facades\Config;
 
 class GoogleGeocoder {
     
@@ -20,7 +19,7 @@ class GoogleGeocoder {
     | Your application's API key. This key identifies your application for 
     | purposes of quota management. Learn how to get a key from the APIs Console.
     */    
-        private $applicationKey;  
+        protected $applicationKey;  
         
 
     /*
@@ -29,7 +28,7 @@ class GoogleGeocoder {
     |--------------------------------------------------------------------------
     |
     */    
-        private $requestUrl; 
+        protected $requestUrl; 
         
     /*
     |--------------------------------------------------------------------------
@@ -37,7 +36,7 @@ class GoogleGeocoder {
     |--------------------------------------------------------------------------
     |
     */    
-        private $availableFormats;
+        protected $availableFormats;
         
     /*
     |--------------------------------------------------------------------------
@@ -45,7 +44,7 @@ class GoogleGeocoder {
     |--------------------------------------------------------------------------
     |
     */    
-        private $format;        
+        protected $format;        
         
   /*
     |--------------------------------------------------------------------------
@@ -53,9 +52,9 @@ class GoogleGeocoder {
     |--------------------------------------------------------------------------
     |
     */    
-        private $param;        
+        protected $param;        
         
-        private $r;
+       
     
     /**
      * Set Application Key and Request URL
@@ -63,28 +62,10 @@ class GoogleGeocoder {
      * @param string $format - output format json or xml
      * @param array $param - geocoding request parameters
      */
-    public function __construct() {
+    public function __construct($config) {
         
-        $this->applicationKey   = Config::get('google-geocoder::applicationKey');
-        
-        // Throw an error if application key is empty
-        if(empty($this->applicationKey)):
-            throw new \InvalidArgumentException('Application Key is empty, please check your config file.');
-        endif;  
-
-        $this->requestUrl       = Config::get('google-geocoder::requestUrl');
-                
-        // Throw an error if request URL is empty
-        if(empty($this->requestUrl)):
-            throw new \InvalidArgumentException('Request URL is empty, please check your config file.');
-        endif;  
-        
-        $this->availableFormats  = Config::get('google-geocoder::output');
-        // Throw an error if output format not specified
-        if(!is_array($this->availableFormats) && count($this->availableFormats) < 1):
-            throw new \InvalidArgumentException('Add a least one output format in your config file.');
-        endif;        
-               
+        $this->applicationKey   = $config['applicationKey'];
+        $this->requestUrl       = $config['requestUrl'];        
     }
     /***/
     
@@ -94,7 +75,7 @@ class GoogleGeocoder {
      * @return string
      * @throws \RuntimeException
      */
-    private function call(){
+    protected function call(){
         
         $curl = curl_init();
        
@@ -130,14 +111,12 @@ class GoogleGeocoder {
      */
     public function geocode($format, $param){      
  
-        $this->format     = in_array($format, $this->availableFormats) ? $format : 'json';
+        $this->format     = array_key_exists($format, $this->requestUrl) ? $format : 'json';
         $param['key']     = $this->applicationKey;
         $this->param      = http_build_query($param);  
         
         return $this->call();
     }
     /***/
-    
-
-    
+        
 }

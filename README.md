@@ -26,16 +26,6 @@ Once installed, register Laravel service provider, in your `app/config/app.php`:
 )
 ```
 
-Add the facade in your `app/config/app.php`:
-
-```php
-'aliases' => array(
-	...
-	'Geocoder'=> 'Alexpechkarev\GoogleGeocoder\Facades\GoogleGeocoderFacade',
-)
-```
-
-
 
 Publish configuration file:
 

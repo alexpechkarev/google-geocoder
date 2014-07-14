@@ -20,7 +20,7 @@ return array(
         | Your application's API key. This key identifies your application for 
         | purposes of quota management. Learn how to get a key from the APIs Console.
 	*/
-        'applicationKey' => 'your-api-key',    
+        'applicationKey' => 'AIzaSyCvXMAJlk03ntKLCjVIPeqJ5d8Z-qwwVQA',    
 
 	/*
 	|--------------------------------------------------------------------------
@@ -32,15 +32,6 @@ return array(
                 'json' => 'https://maps.googleapis.com/maps/api/geocode/json?',
                 'xml'  => 'https://maps.googleapis.com/maps/api/geocode/xml?'
             ),
-
-    
-	/*
-	|--------------------------------------------------------------------------
-	| Output formats
-	|--------------------------------------------------------------------------
-	|
-	*/
-        'output' => array('json', 'xml'),
     
 	
 );

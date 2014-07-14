@@ -2,7 +2,9 @@
 
 namespace Alexpechkarev\GoogleGeocoder;
 
+use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Config;
 
 class GoogleGeocoderServiceProvider extends ServiceProvider {
 
@@ -22,6 +24,7 @@ class GoogleGeocoderServiceProvider extends ServiceProvider {
          public function boot(){
             
             $this->package("alexpechkarev/google-geocoder");
+            AliasLoader::getInstance()->alias('Geocoder','Alexpechkarev\GoogleGeocoder\Facades\GoogleGeocoderFacade');            
             
         }                 
 
@@ -35,7 +38,23 @@ class GoogleGeocoderServiceProvider extends ServiceProvider {
             
             $this->app['GoogleGeocoder'] = $this->app->share(function($app)
             {                    
-                return new GoogleGeocoder();
+                $config = array();
+                $config['applicationKey']   = Config::get('google-geocoder::applicationKey');
+
+                // Throw an error if application key is empty
+                if(empty($config['applicationKey'])):
+                    throw new \InvalidArgumentException('Application Key is empty, please check your config file.');
+                endif;  
+
+                $config['requestUrl']       = Config::get('google-geocoder::requestUrl');
+
+                // Throw an error if request URL is empty
+                if(empty($config['requestUrl'])):
+                    throw new \InvalidArgumentException('Request URL is empty, please check your config file.');
+                endif;  
+
+                 
+                return new GoogleGeocoder($config);
 
             }); 
 	}

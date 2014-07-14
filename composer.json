@@ -1,6 +1,10 @@
 {
     "name": "alexpechkarev/google-geocoder",
-    "description": "",
+    "version": "1.0.0",
+    "description": "Simple Google Geocoding API wrapper for Laravel 4",
+    "keywords": ["geocoding", "google geocoding api", "laravel"],
+    "homepage": "https://github.com/alexpechkarev/google-geocoder",
+    "license": "MIT",
     "authors": [
         {
             "name": "Alexander Pechkarev",
@@ -16,5 +20,5 @@
             "Alexpechkarev\\GoogleGeocoder": "src/"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "dev"
 }

@@ -12,6 +12,18 @@ class GoogleGeocoderServiceProvider extends ServiceProvider {
 	 * @var bool
 	 */
 	protected $defer = false;
+                
+                
+        /**
+         * Bootstrap the application events.
+         *
+         * @return void
+         */                
+         public function boot(){
+            
+            $this->package("alexpechkarev/google-geocoder");
+            
+        }                 
 
 	/**
 	 * Register the service provider.
@@ -20,19 +32,14 @@ class GoogleGeocoderServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		    $this->app['GoogleGeocoder'] = $this->app->share(function($app)
-		    {
-                	return new GoogleGeocoder();
-		        	
-		    }); 
+            
+            $this->app['GoogleGeocoder'] = $this->app->share(function($app)
+            {                    
+                return new GoogleGeocoder();
+
+            }); 
 	}
         
-        public function boot(){
-            
-            $this->package("alexpechkarev/google-geocoder");
-            
-        }        
-
 	/**
 	 * Get the services provided by the provider.
 	 *

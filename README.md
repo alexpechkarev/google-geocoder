@@ -78,7 +78,7 @@ $param = array(
 
 Geocoding API supports translation of map coordinates into human-readable address 
 by reverse geocoding using latitude and longitude parameters. For more details 
-refer to [***Reverse Geocoding ***](https://developers.google.com/maps/documentation/geocoding/#ReverseGeocoding)
+refer to [***Reverse Geocoding***](https://developers.google.com/maps/documentation/geocoding/#ReverseGeocoding)
 To make reverse geocoding request use following:
 
 ```php

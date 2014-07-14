@@ -1,5 +1,6 @@
 Google Geocoder API for Lavarel 4
 ======================
+[![Build Status](https://travis-ci.org/alexpechkarev/google-geocoder.svg?branch=master)](https://travis-ci.org/alexpechkarev/google-geocoder)
 
 This package provides simple facility to make Google Geocoder API [**The Google Geocoding API**]
 (https://developers.google.com/maps/documentation/geocoding/) calls to use with [**Laravel 4**](http://laravel.com/).

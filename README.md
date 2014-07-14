@@ -1,8 +1,8 @@
 Google Geocoder API for Lavarel 4
 ======================
 
-This package provides simple wrapper for Google Geocoder API [**The Google Geocoding API**](https://developers.google.com/maps/documentation/geocoding/) 
-to use with [**Laravel 4**](http://laravel.com/).
+This package provides simple facility to make Google Geocoder API [**The Google Geocoding API**]
+(https://developers.google.com/maps/documentation/geocoding/) calls to use with [**Laravel 4**](http://laravel.com/).
 
 
 Installation
@@ -17,7 +17,7 @@ To install edit `composer.json` and add:
 Configuration
 -------------
 
-Once installed, you need to register Laravel service provider, in your `app/config/app.php`:
+Once installed, register Laravel service provider, in your `app/config/app.php`:
 
 ```php
 'providers' => array(
@@ -26,7 +26,7 @@ Once installed, you need to register Laravel service provider, in your `app/conf
 )
 ```
 
-Register the facade in your `app/config/app.php`:
+Add the facade in your `app/config/app.php`:
 
 ```php
 'aliases' => array(
@@ -37,7 +37,7 @@ Register the facade in your `app/config/app.php`:
 
 
 
-Publish configuration file using Artisan command:
+Publish configuration file:
 
 ```
 $ php artisan config:publish alexpechkarev/google-geocoder --path vendor/alexpechkarev/google-geocoder/src/config/
@@ -48,40 +48,32 @@ Usage
 -----
 
 Before making calls please ensure you obtain API Key to identify your application and add this key in the configuration file.
-More information on API Key can be found from [**The Google Geocoding API**](https://developers.google.com/maps/documentation/geocoding/#api_key).
+More information on API Key please refer to [**The Google Geocoding API**](https://developers.google.com/maps/documentation/geocoding/#api_key).
 
 ```php
 'applicationKey' => 'your-api-key',
 ```
 
-Prepare address you would like to geocode by creating an array with key=>value pairs
+Create an array with key=>value pairs specifying address you would like to geocode:
 
 ```php
-            $param = array("address"=>"76 Buckingham Palace Road London SW1W 9TQ");
+$param = array("address"=>"76 Buckingham Palace Road London SW1W 9TQ");
 ```
 
-Prepare address you would like to geocode by creating an array with key=>value pairs
+Use following command to receive Geocoding response in json format, use xml as fist parameter for XML response.
 
 ```php
-            $param = array("address"=>"76 Buckingham Palace Road London SW1W 9TQ");
+$reponse = Geocoder::geocode('json', $param);
 ```
 
-And use following command to receive Geocoding response in json format, use 'xml' as fist parameter for XML response.
-
-```php
-
-    $reponse = Geocoder::geocode('json', $param);
-
-```
-
-To restrict your results to a specific area use components filter [***Component Filtering***](https://developers.google.com/maps/documentation/geocoding/#ComponentFiltering)
+To restrict your results to a specific area use component filter [***Component Filtering***](https://developers.google.com/maps/documentation/geocoding/#ComponentFiltering)
 by adding it's filters to parameter array.
 
 ```php
-            $param = array(
-                            "address"=>"76 Buckingham Palace Road London SW1W 9TQ",
-                            "componets"=>"country:GB"
-                        );
+$param = array(
+                "address"=>"76 Buckingham Palace Road London SW1W 9TQ",
+                "componets"=>"country:GB"
+            );
 ```
 
 Geocoding API supports translation of map coordinates into human-readable address 
@@ -89,7 +81,8 @@ by reverse geocoding using latitude and longitude parameters. For more details r
 To make reverse geocoding request use following:
 
 ```php
-            $param = array("latlng"=>"40.714224,-73.961452");
+$param = array("latlng"=>"40.714224,-73.961452");
+$reponse = Geocoder::geocode('json', $param);
 ```
 
 All request will return `string` result. For Response example, Status Codes, Error Messages and Results please refer to [***Geocoding Responses***](https://developers.google.com/maps/documentation/geocoding/#GeocodingResponses)

@@ -1,5 +1,6 @@
 {
     "name": "alexpechkarev/google-geocoder",
+    "version": "1.0.0",
     "description": "Simple Google Geocoding API wrapper for Laravel 4",
     "keywords": ["geocoding", "google geocoding api", "laravel"],
     "homepage": "https://github.com/alexpechkarev/google-geocoder",
@@ -12,7 +13,7 @@
     ],
     "require": {
         "php": ">=5.3.0",
-        "illuminate/support": "4.1.*"
+        "illuminate/support": "4.*"
     },
     "autoload": {
         "psr-0": {

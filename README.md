@@ -12,7 +12,7 @@ Installation
 To install edit `composer.json` and add:
 
 ```javascript
-"alexpechkarev/google-geocoder": "1.*"
+"alexpechkarev/google-geocoder": "dev-master"
 ```
 
 Configuration

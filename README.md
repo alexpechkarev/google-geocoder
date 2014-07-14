@@ -76,7 +76,7 @@ $param = array("latlng"=>"40.714224,-73.961452");
 $reponse = Geocoder::geocode('json', $param);
 ```
 
-All request will return `string` result. For Response example, Status Codes, 
+All requests will return `string` result. For Response example, Status Codes, 
 Error Messages and Results please refer to [***Geocoding Responses***]
 (https://developers.google.com/maps/documentation/geocoding/#GeocodingResponses)
 

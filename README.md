@@ -101,6 +101,6 @@ Support
 License
 -------
 
-GeocoderLaravel is released under the MIT License. See the bundled
+Google Geocoder for Laravel 4 is released under the MIT License. See the bundled
 [LICENSE](https://github.com/alexpechkarev/google-geocoder/blob/master/LICENSE)
 file for details.

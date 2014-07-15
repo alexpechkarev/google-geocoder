@@ -21,10 +21,7 @@
     "autoload": {
         "psr-0": {
             "Alexpechkarev\\GoogleGeocoder": "src/"
-        },
-        
-            
-    "minimum-stability": "stable"        
+        }                  
         
     }
     

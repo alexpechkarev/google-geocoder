@@ -2,7 +2,7 @@ Google Geocoder API for Lavarel 4
 ======================
 [![Build Status](https://travis-ci.org/alexpechkarev/google-geocoder.svg?branch=master)](https://travis-ci.org/alexpechkarev/google-geocoder)
 
-This package provides simple facility to make Google Geocoder API [**The Google Geocoding API**]
+This package provides simple facility to make [**The Google Geocoding API v3**]
 (https://developers.google.com/maps/documentation/geocoding/) calls to use with [**Laravel 4**](http://laravel.com/).
 
 
@@ -14,6 +14,9 @@ To install edit `composer.json` and add:
 ```javascript
 "alexpechkarev/google-geocoder": "dev-master"
 ```
+
+Run `composer update`
+
 
 Configuration
 -------------
@@ -57,7 +60,7 @@ Use following command to receive Geocoding response in json format, use xml as f
 $reponse = Geocoder::geocode('json', $param);
 ```
 
-To restrict your results to a specific area use component filter [***Component Filtering***](https://developers.google.com/maps/documentation/geocoding/#ComponentFiltering)
+To restrict your results to a specific area use component filter [**Component Filtering**](https://developers.google.com/maps/documentation/geocoding/#ComponentFiltering)
 by adding it's filters to parameter array.
 
 ```php
@@ -78,7 +81,7 @@ $reponse = Geocoder::geocode('json', $param);
 ```
 
 All requests will return `string` result. For Response example, Status Codes, 
-Error Messages and Results please refer to [***Geocoding Responses***]
+Error Messages and Results please refer to [**Geocoding Responses**]
 (https://developers.google.com/maps/documentation/geocoding/#GeocodingResponses)
 
 

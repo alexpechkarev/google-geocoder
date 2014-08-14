@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Google-geocoder by alexpechkarev</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Google-geocoder</h1>
+        <h2>Google Geocoder API v3 for Laravel</h2>
+        <a href="https://github.com/alexpechkarev/google-geocoder" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a name="google-geocoder-api-for-lavarel-4" class="anchor" href="#google-geocoder-api-for-lavarel-4"><span class="octicon octicon-link"></span></a>Google Geocoder API for Lavarel 4</h1>
+
+<p><a href="https://travis-ci.org/alexpechkarev/google-geocoder"><img src="https://travis-ci.org/alexpechkarev/google-geocoder.svg?branch=master" alt="Build Status"></a></p>
+
+<p>This package provides simple facility to make <a href="https://developers.google.com/maps/documentation/geocoding/"><strong>The Google Geocoding API v3</strong></a> calls with <a href="http://laravel.com/"><strong>Laravel 4</strong></a>.</p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>To install edit <code>composer.json</code> and add following line:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="s2">"alexpechkarev/google-geocoder"</span><span class="o">:</span> <span class="s2">"dev-master"</span>
+</pre></div>
+
+<p>Run <code>composer update</code></p>
+
+<h2>
+<a name="configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h2>
+
+<p>Once installed, register Laravel service provider, in your <code>app/config/app.php</code>:</p>
+
+<div class="highlight highlight-php"><pre><span class="s1">'providers'</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+    <span class="o">...</span>
+    <span class="s1">'Alexpechkarev\GoogleGeocoder\GoogleGeocoderServiceProvider'</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+
+<p>Publish configuration file:</p>
+
+<pre><code>$ php artisan config:publish alexpechkarev/google-geocoder --path vendor/alexpechkarev/google-geocoder/src/config/
+</code></pre>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Before making calls please ensure you obtain API Key to identify your application and add this key in the configuration file.
+More information on API Key please refer to <a href="https://developers.google.com/maps/documentation/geocoding/#api_key"><strong>The Google Geocoding API</strong></a>.</p>
+
+<div class="highlight highlight-php"><pre><span class="s1">'applicationKey'</span> <span class="o">=&gt;</span> <span class="s1">'your-api-key'</span><span class="p">,</span>
+</pre></div>
+
+<p>Create an array with key=&gt;value pairs specifying address you would like to geocode:</p>
+
+<div class="highlight highlight-php"><pre><span class="nv">$param</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">"address"</span><span class="o">=&gt;</span><span class="s2">"76 Buckingham Palace Road London SW1W 9TQ"</span><span class="p">);</span>
+</pre></div>
+
+<p>Use following command to receive Geocoding response in json format, use xml as fist parameter for XML response.</p>
+
+<div class="highlight highlight-php"><pre><span class="nv">$reponse</span> <span class="o">=</span> <span class="nx">Geocoder</span><span class="o">::</span><span class="na">geocode</span><span class="p">(</span><span class="s1">'json'</span><span class="p">,</span> <span class="nv">$param</span><span class="p">);</span>
+</pre></div>
+
+<p>To restrict your results to a specific area use component filter <a href="https://developers.google.com/maps/documentation/geocoding/#ComponentFiltering"><strong>Component Filtering</strong></a>
+by adding it's filters to parameter array.</p>
+
+<div class="highlight highlight-php"><pre><span class="nv">$param</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+                <span class="s2">"address"</span><span class="o">=&gt;</span><span class="s2">"76 Buckingham Palace Road London SW1W 9TQ"</span><span class="p">,</span>
+                <span class="s2">"componets"</span><span class="o">=&gt;</span><span class="s2">"country:GB"</span>
+            <span class="p">);</span>
+</pre></div>
+
+<p>Geocoding API supports translation of map coordinates into human-readable address 
+by reverse geocoding using latitude and longitude parameters. For more details 
+refer to <a href="https://developers.google.com/maps/documentation/geocoding/#ReverseGeocoding"><strong>Reverse Geocoding</strong></a>
+To make reverse geocoding request use following:</p>
+
+<div class="highlight highlight-php"><pre><span class="nv">$param</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">"latlng"</span><span class="o">=&gt;</span><span class="s2">"40.714224,-73.961452"</span><span class="p">);</span>
+<span class="nv">$reponse</span> <span class="o">=</span> <span class="nx">Geocoder</span><span class="o">::</span><span class="na">geocode</span><span class="p">(</span><span class="s1">'json'</span><span class="p">,</span> <span class="nv">$param</span><span class="p">);</span>
+</pre></div>
+
+<p>All requests will return <code>string</code> value. For Response example, Status Codes, 
+Error Messages and Results please refer to <a href="https://developers.google.com/maps/documentation/geocoding/#GeocodingResponses"><strong>Geocoding Responses</strong></a></p>
+
+<h2>
+<a name="support" class="anchor" href="#support"><span class="octicon octicon-link"></span></a>Support</h2>
+
+<p><a href="https://github.com/alexpechkarev/google-geocoder/issues">Please open an issue on GitHub</a></p>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>Google Geocoder for Laravel 4 is released under the MIT License. See the bundled
+<a href="https://github.com/alexpechkarev/google-geocoder/blob/master/LICENSE">LICENSE</a>
+file for details.</p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/alexpechkarev/google-geocoder/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/alexpechkarev/google-geocoder/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/alexpechkarev/google-geocoder"></a> is maintained by <a href="https://github.com/alexpechkarev">alexpechkarev</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>

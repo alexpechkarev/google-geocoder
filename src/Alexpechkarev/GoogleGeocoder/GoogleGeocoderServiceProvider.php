@@ -37,12 +37,6 @@ class GoogleGeocoderServiceProvider extends ServiceProvider {
         {
             $config = array();
             $config['applicationKey']   = Config::get('google-geocoder.applicationKey');
-
-            // Throw an error if application key is empty
-            if (empty($config['applicationKey'])) {
-                throw new \InvalidArgumentException('Application Key is empty, please check your config file.');
-            }
-
             $config['requestUrl']       = Config::get('google-geocoder.requestUrl');
 
             // Throw an error if request URL is empty

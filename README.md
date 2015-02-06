@@ -1,4 +1,4 @@
-Google Geocoder API for Lavarel 4
+Google Geocoder API for Lavarel 5
 ======================
 [![Build Status](https://travis-ci.org/alexpechkarev/google-geocoder.svg?branch=master)](https://travis-ci.org/alexpechkarev/google-geocoder)
 
@@ -95,6 +95,6 @@ Support
 License
 -------
 
-Google Geocoder for Laravel 4 is released under the MIT License. See the bundled
+Google Geocoder for Laravel 5 is released under the MIT License. See the bundled
 [LICENSE](https://github.com/alexpechkarev/google-geocoder/blob/master/LICENSE)
 file for details.

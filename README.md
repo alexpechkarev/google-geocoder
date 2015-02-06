@@ -1,9 +1,9 @@
-Google Geocoder API for Lavarel 4
+Google Geocoder API for Lavarel 5
 ======================
 [![Build Status](https://travis-ci.org/alexpechkarev/google-geocoder.svg?branch=master)](https://travis-ci.org/alexpechkarev/google-geocoder)
 
 This package provides simple facility to make [**The Google Geocoding API v3**]
-(https://developers.google.com/maps/documentation/geocoding/) calls with [**Laravel 4**](http://laravel.com/).
+(https://developers.google.com/maps/documentation/geocoding/) calls with [**Laravel 5**](http://laravel.com/).
 
 
 Installation
@@ -21,7 +21,7 @@ Run `composer update`
 Configuration
 -------------
 
-Once installed, register Laravel service provider, in your `app/config/app.php`:
+Once installed, register Laravel service provider, in your `config/app.php`:
 
 ```php
 'providers' => array(
@@ -30,13 +30,45 @@ Once installed, register Laravel service provider, in your `app/config/app.php`:
 )
 ```
 
-
-Publish configuration file:
+Next, create a `config/google-geocoder.php`, containing:
 
 ```
-$ php artisan config:publish alexpechkarev/google-geocoder --path vendor/alexpechkarev/google-geocoder/src/config/
-```
+<?php
 
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Google Geocoder
+    |--------------------------------------------------------------------------
+    | Geocoding is the process of converting addresses (like "1600 Amphitheatre Parkway, Mountain View, CA")
+    | into geographic coordinates (like latitude 37.423021 and longitude -122.083739),
+    | which you can use to place markers or position the map.
+    |
+    */
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application Key
+    |--------------------------------------------------------------------------
+    |
+    | Your application's API key. This key identifies your application for
+    | purposes of quota management. Learn how to get a key from the APIs Console.
+    */
+    'applicationKey' => 'my-api-key',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Request URL
+    |--------------------------------------------------------------------------
+    |
+    */
+    'requestUrl' => [
+        'json' => 'https://maps.googleapis.com/maps/api/geocode/json?',
+        'xml'  => 'https://maps.googleapis.com/maps/api/geocode/xml?'
+    ],
+];
+```
 
 Usage
 -----
@@ -70,8 +102,8 @@ $param = array(
             );
 ```
 
-Geocoding API supports translation of map coordinates into human-readable address 
-by reverse geocoding using latitude and longitude parameters. For more details 
+Geocoding API supports translation of map coordinates into human-readable address
+by reverse geocoding using latitude and longitude parameters. For more details
 refer to [**Reverse Geocoding**](https://developers.google.com/maps/documentation/geocoding/#ReverseGeocoding)
 To make reverse geocoding request use following:
 
@@ -80,7 +112,7 @@ $param = array("latlng"=>"40.714224,-73.961452");
 $reponse = Geocoder::geocode('json', $param);
 ```
 
-All requests will return `string` value. For Response example, Status Codes, 
+All requests will return `string` value. For Response example, Status Codes,
 Error Messages and Results please refer to [**Geocoding Responses**]
 (https://developers.google.com/maps/documentation/geocoding/#GeocodingResponses)
 
@@ -95,6 +127,6 @@ Support
 License
 -------
 
-Google Geocoder for Laravel 4 is released under the MIT License. See the bundled
+Google Geocoder for Laravel 5 is released under the MIT License. See the bundled
 [LICENSE](https://github.com/alexpechkarev/google-geocoder/blob/master/LICENSE)
 file for details.

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Alexpechkarev\GoogleGeocoder;
 
@@ -14,19 +14,17 @@ class GoogleGeocoderServiceProvider extends ServiceProvider {
 	 * @var bool
 	 */
 	protected $defer = false;
-                
-                
+
+
         /**
          * Bootstrap the application events.
          *
          * @return void
-         */                
-         public function boot(){
-            
-            $this->package("alexpechkarev/google-geocoder");
-            AliasLoader::getInstance()->alias('Geocoder','Alexpechkarev\GoogleGeocoder\Facades\GoogleGeocoderFacade');            
-            
-        }                 
+         */
+        public function boot()
+        {
+            AliasLoader::getInstance()->alias('Geocoder','Alexpechkarev\GoogleGeocoder\Facades\GoogleGeocoderFacade');
+        }
 
 	/**
 	 * Register the service provider.
@@ -35,30 +33,30 @@ class GoogleGeocoderServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-            
+
             $this->app['GoogleGeocoder'] = $this->app->share(function($app)
-            {                    
+            {
                 $config = array();
                 $config['applicationKey']   = Config::get('google-geocoder::applicationKey');
 
                 // Throw an error if application key is empty
                 if(empty($config['applicationKey'])):
                     throw new \InvalidArgumentException('Application Key is empty, please check your config file.');
-                endif;  
+                endif;
 
                 $config['requestUrl']       = Config::get('google-geocoder::requestUrl');
 
                 // Throw an error if request URL is empty
                 if(empty($config['requestUrl'])):
                     throw new \InvalidArgumentException('Request URL is empty, please check your config file.');
-                endif;  
+                endif;
 
-                 
+
                 return new GoogleGeocoder($config);
 
-            }); 
+            });
 	}
-        
+
 	/**
 	 * Get the services provided by the provider.
 	 *

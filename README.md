@@ -3,7 +3,7 @@ Google Geocoder API for Lavarel 4
 [![Build Status](https://travis-ci.org/alexpechkarev/google-geocoder.svg?branch=master)](https://travis-ci.org/alexpechkarev/google-geocoder)
 
 This package provides simple facility to make [**The Google Geocoding API v3**]
-(https://developers.google.com/maps/documentation/geocoding/) calls with [**Laravel 4**](http://laravel.com/).
+(https://developers.google.com/maps/documentation/geocoding/) calls with [**Laravel 5**](http://laravel.com/).
 
 
 Installation
@@ -70,8 +70,8 @@ $param = array(
             );
 ```
 
-Geocoding API supports translation of map coordinates into human-readable address 
-by reverse geocoding using latitude and longitude parameters. For more details 
+Geocoding API supports translation of map coordinates into human-readable address
+by reverse geocoding using latitude and longitude parameters. For more details
 refer to [**Reverse Geocoding**](https://developers.google.com/maps/documentation/geocoding/#ReverseGeocoding)
 To make reverse geocoding request use following:
 
@@ -80,7 +80,7 @@ $param = array("latlng"=>"40.714224,-73.961452");
 $reponse = Geocoder::geocode('json', $param);
 ```
 
-All requests will return `string` value. For Response example, Status Codes, 
+All requests will return `string` value. For Response example, Status Codes,
 Error Messages and Results please refer to [**Geocoding Responses**]
 (https://developers.google.com/maps/documentation/geocoding/#GeocodingResponses)
 

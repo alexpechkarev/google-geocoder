@@ -5,6 +5,10 @@ Google Geocoder API for Lavarel 5
 This package provides simple facility to make [**The Google Geocoding API v3**]
 (https://developers.google.com/maps/documentation/geocoding/) calls with [**Laravel 5**](http://laravel.com/).
 
+Dependancy
+------------
+[**PHP cURL**] (http://php.net/manual/en/curl.installation.php) required
+
 
 Installation
 ------------
@@ -89,7 +93,7 @@ $param = array("address"=>"76 Buckingham Palace Road London SW1W 9TQ");
 Use following command to receive Geocoding response in json format, use xml as fist parameter for XML response.
 
 ```php
-$reponse = Geocoder::geocode('json', $param);
+$reponse = \Geocoder::geocode('json', $param);
 ```
 
 To restrict your results to a specific area use component filter [**Component Filtering**](https://developers.google.com/maps/documentation/geocoding/#ComponentFiltering)
@@ -109,7 +113,7 @@ To make reverse geocoding request use following:
 
 ```php
 $param = array("latlng"=>"40.714224,-73.961452");
-$reponse = Geocoder::geocode('json', $param);
+$reponse = \Geocoder::geocode('json', $param);
 ```
 
 All requests will return `string` value. For Response example, Status Codes,

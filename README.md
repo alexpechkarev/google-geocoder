@@ -93,7 +93,7 @@ $param = array("address"=>"76 Buckingham Palace Road London SW1W 9TQ");
 Use following command to receive Geocoding response in json format, use xml as fist parameter for XML response.
 
 ```php
-$reponse = \Geocoder::geocode('json', $param);
+$response = \Geocoder::geocode('json', $param);
 ```
 
 To restrict your results to a specific area use component filter [**Component Filtering**](https://developers.google.com/maps/documentation/geocoding/#ComponentFiltering)
@@ -113,7 +113,7 @@ To make reverse geocoding request use following:
 
 ```php
 $param = array("latlng"=>"40.714224,-73.961452");
-$reponse = \Geocoder::geocode('json', $param);
+$response = \Geocoder::geocode('json', $param);
 ```
 
 All requests will return `string` value. For Response example, Status Codes,

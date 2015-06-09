@@ -90,7 +90,7 @@ Create an array with key=>value pairs specifying address you would like to geoco
 $param = array("address"=>"76 Buckingham Palace Road London SW1W 9TQ");
 ```
 
-Use following command to receive Geocoding response in json format, use xml as fist parameter for XML response.
+Use following command to receive Geocoding response in json format, use xml as first parameter for XML response.
 
 ```php
 $response = \Geocoder::geocode('json', $param);

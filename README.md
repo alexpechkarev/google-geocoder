@@ -102,7 +102,7 @@ by adding it's filters to parameter array.
 ```php
 $param = array(
                 "address"=>"76 Buckingham Palace Road London SW1W 9TQ",
-                "componets"=>"country:GB"
+                "components"=>"country:GB"
             );
 ```
 

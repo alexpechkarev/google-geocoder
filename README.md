@@ -36,7 +36,7 @@ Once installed, register Laravel service provider, in your `config/app.php`:
 
 Next, create a `config/google-geocoder.php`, containing:
 
-```
+```php
 <?php
 
 return [

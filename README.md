@@ -5,6 +5,8 @@ Google Geocoder API for Lavarel 5
 This package provides simple facility to make [**The Google Geocoding API v3**]
 (https://developers.google.com/maps/documentation/geocoding/) calls with [**Laravel 5**](http://laravel.com/).
 
+See [Collection of Google Maps API Web Services for Laravel] that also (https://github.com/alexpechkarev/google-maps) includes Google Geocoding API v3.
+
 Dependency
 ------------
 [**PHP cURL**] (http://php.net/manual/en/curl.installation.php) required

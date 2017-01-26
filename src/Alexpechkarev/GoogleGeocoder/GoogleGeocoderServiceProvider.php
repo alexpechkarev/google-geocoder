@@ -33,7 +33,8 @@ class GoogleGeocoderServiceProvider extends ServiceProvider {
      */
     public function register()
     {
-        $this->app['GoogleGeocoder'] = $this->app->share(function($app)
+        #$this->app['GoogleGeocoder'] = $this->app->share(function($app)
+        $this->app['GoogleGeocoder'] = $this->app->singleton('GoogleGeocoder', function($app)
         {
             $config = array();
             $config['applicationKey']   = Config::get('google-geocoder.applicationKey');

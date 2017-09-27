@@ -1,7 +1,7 @@
 {
     "name": "google-geocoder/geocoder",
     "version": "1.2.0",
-    "description": "Simple Google Geocoding API v3 wrapper for Laravel 4/5, Slim 3 etc",
+    "description": "Simple Google Geocoding API v3 wrapper for Laravel 4/5, Slim3 etc",
     "keywords": ["geocoding", "google geocoding api", "laravel"],
     "homepage": "https://github.com/isaac-perkins/google-geocoder",
     "license": "MIT",
@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-0": {
-            "GoogleGeocoder\\Geocoder": "src/"
+            "Alexpechkarev\\GoogleGeocoder": "src/"
         }
 
     }

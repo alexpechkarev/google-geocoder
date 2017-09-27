@@ -11,7 +11,7 @@ See [*Collection of Google Maps API Web Services for Laravel*](https://github.co
 
 Dependency
 ------------
-[**PHP cURL**] (http://php.net/manual/en/curl.installation.php) required
+[**PHP cURL**](http://php.net/manual/en/curl.installation.php) required
 
 
 Installation
@@ -92,7 +92,7 @@ return [
 
         'google' => [
           'geocoder' => [
-            'applicationKey' => 'AIzaSyBBwil4yvprt-pi_TBBNFI_nJEBOtVSNC4',
+            'applicationKey' => 'my-api-key',
             'requestUrl' => [
                 'json' => 'https://maps.googleapis.com/maps/api/geocode/json?',
                 'xml'  => 'https://maps.googleapis.com/maps/api/geocode/xml?'

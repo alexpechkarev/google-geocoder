@@ -2,8 +2,7 @@ Google Geocoder API
 ======================
 [![Build Status](https://travis-ci.org/alexpechkarev/google-geocoder.svg?branch=master)](https://travis-ci.org/alexpechkarev/google-geocoder)
 
-This package provides simple facility to make [**The Google Geocoding API v3**]
-(https://developers.google.com/maps/documentation/geocoding/) calls with [**Laravel 5**](http://laravel.com/).
+This package provides simple facility to make [**The Google Geocoding API v3**](https://developers.google.com/maps/documentation/geocoding/) calls with [**Laravel 5**](http://laravel.com/).
 
 See [*Collection of Google Maps API Web Services for Laravel*](https://github.com/alexpechkarev/google-maps) that also includes Google Geocoding API v3.
 

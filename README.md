@@ -1,4 +1,4 @@
-Google Geocoder API for Lavarel 5
+Google Geocoder API
 ======================
 [![Build Status](https://travis-ci.org/alexpechkarev/google-geocoder.svg?branch=master)](https://travis-ci.org/alexpechkarev/google-geocoder)
 
@@ -6,6 +6,9 @@ This package provides simple facility to make [**The Google Geocoding API v3**]
 (https://developers.google.com/maps/documentation/geocoding/) calls with [**Laravel 5**](http://laravel.com/).
 
 See [*Collection of Google Maps API Web Services for Laravel*](https://github.com/alexpechkarev/google-maps) that also includes Google Geocoding API v3.
+
+**Laravel 5**
+======================
 
 Dependency
 ------------
@@ -76,8 +79,54 @@ return [
 ];
 ```
 
+**Slim 3**
+======================
+Settings
+-------------
+```php
+return [
+    'settings' => [
+      /* slim settings */
+      'displayErrorDetails' => true,
+
+      'determineRouteBeforeAppMiddleware' => true,
+
+        'google' => [
+          'geocoder' => [
+            'applicationKey' => 'AIzaSyBBwil4yvprt-pi_TBBNFI_nJEBOtVSNC4',
+            'requestUrl' => [
+                'json' => 'https://maps.googleapis.com/maps/api/geocode/json?',
+                'xml'  => 'https://maps.googleapis.com/maps/api/geocode/xml?'
+            ]
+          ]
+        ]
+    ]
+];
+```
+
+Container Dependency
+-------------
+```php
+use GoogleGeocoder\GoogleGeocoder;
+
+$container['GeoCoder'] = function ($container) {
+
+  return new GoogleGeocoder($container->get('settings')['google']['geocoder']);
+
+};
+
+```
+
+
+Using
+------
+```php
+$gc = $this->container['GeoCoder'];
+```
+
+
 Usage
------
+======================
 
 Before making calls please ensure you obtain API Key to identify your application and add this key in the configuration file.
 More information on API Key please refer to [**The Google Geocoding API**](https://developers.google.com/maps/documentation/geocoding/#api_key).
